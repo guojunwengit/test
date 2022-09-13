@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.messageboard.dao.MessageDao">
+        <insert id="addMessage">
+            insert  into message(username, title, add_time, chg_time, content) values (#{username}, #{title}, #{addTime}, #{chgTime}, #{content})
+        </insert>
+    <select id="getMessage" resultType="com.test.messageboard.entity.Message" >
+        select * from message
+    </select>
+
+    <update id="updateMessage" parameterType="com.test.messageboard.entity.Message">
+        update message set content = #{content}, chg_time = #{chgTime} where id = #{id}
+    </update>
+
+    <update id="replyMessage" parameterType="com.test.messageboard.entity.Message">
+        update message set reply = #{reply}, chg_time = #{chgTime} where id = #{id}
+    </update>
+
+</mapper>
